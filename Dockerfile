@@ -17,4 +17,5 @@ RUN apt-get install -y vim less
 WORKDIR /app
 
 COPY ./package*.json ./
+COPY ./.babelrc ./
 RUN npm install

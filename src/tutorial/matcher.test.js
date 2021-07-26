@@ -98,3 +98,5 @@ test('adding floating point numbers', () => {
     // expect(value).toBe(0.3);
     expect(value).toBeCloseTo(0.3);
 });
+
+// https://jestjs.io/ja/docs/using-matchers

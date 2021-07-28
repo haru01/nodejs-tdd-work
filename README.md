@@ -28,5 +28,5 @@ npm run test
 ## watchAll で実行
 
 ```
-npm run test_watch
+npm run test -- --watchAll
 ```

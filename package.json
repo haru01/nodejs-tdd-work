@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src",
-    "test": "jest",
-    "test_watch": "jest --watchAll"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",

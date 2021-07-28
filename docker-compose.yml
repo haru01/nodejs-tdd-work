@@ -9,4 +9,4 @@ services:
       - ./src:/app/src
       - /app/node_modules
     working_dir: /app
-    command: npm run test_watch
+    command: npm run test -- --watchAll

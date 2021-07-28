@@ -32,6 +32,7 @@ test('divはゼロで割ると例外がでること', () => {
   expect(() => div(10, 0)).toThrow();
   expect(() => div(10, 0)).toThrow(ZeroDivisionError);
   expect(() => div(10, 0)).toThrow('ゼロでは割れません');
+  expect(() => div(10, 0)).toThrow(new ZeroDivisionError('ゼロでは割れません'));
 });
 
 // 文字列のテスト

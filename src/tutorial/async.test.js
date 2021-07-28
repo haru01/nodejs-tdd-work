@@ -57,3 +57,4 @@ describe('myPromiseFunc', () => {
 
 // コールバックは省略
 // https://jestjs.io/ja/docs/asynchronous
+// https://github.com/facebook/jest/tree/master/examples

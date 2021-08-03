@@ -100,4 +100,15 @@ test('adding floating point numbers', () => {
   expect(value).toBeCloseTo(0.3);
 });
 
+// describe & test
+describe('div', () => {
+  test('割り算ができること', () => {
+    expect(div(12, 3)).toBe(4);
+  });
+
+  test('ゼロで割ると例外が発生すること', () => {
+    expect(() => div(10, 0)).toThrow(ZeroDivisionError);
+  });
+});
+
 // https://jestjs.io/ja/docs/using-matchers

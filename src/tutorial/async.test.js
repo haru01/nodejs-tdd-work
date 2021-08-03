@@ -5,10 +5,10 @@ const myPromiseFunc = (message) => {
       if (!message) {
         reject('Fail:'); // 結果は 失敗で Fail:
       } else {
-        resolve('Success:' + message);  // 結果は 成功で Success:<message>
+        resolve('Success:' + message); // 結果は 成功で Success:<message>
       }
 
-    }, 250);
+    }, 100);
   });
 };
 

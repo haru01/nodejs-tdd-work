@@ -30,7 +30,7 @@ describe('contextB', () => {
   });
 });
 
-describe('BeforeAllBeforeEachAfterEachAfterAll', () => {
+describe.skip('BeforeAllBeforeEachAfterEachAfterAll', () => {
   beforeAll(() => {
     console.log('@beforeAll');
   });
@@ -52,7 +52,5 @@ describe('BeforeAllBeforeEachAfterEachAfterAll', () => {
     console.log('@testB');
   });
 });
-
-
 
 // https://jestjs.io/ja/docs/setup-teardown

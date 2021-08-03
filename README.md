@@ -1,3 +1,29 @@
+# Node．js等インストールして実行する場合
+
+## 前提条件
+
+* Node.js 14x がインストール済みであること
+
+https://nodejs.org/
+
+
+## モジュールのインストールとテスト実行
+
+```
+npm install
+npm run test
+```
+
+## watchAll で実行
+```
+npm run test -- --watchAll
+```
+
+## ファイル名を指定して実行
+```
+npm run test -- --watchAll src/tutorial/matcher.test.js
+```
+
 # Docker を使ってテスト実行する場合
 ## 前提条件
 
@@ -9,24 +35,11 @@
 ```
 docker-compose up
 ```
+ctrl + c で停止
 
-
-# Node．js等インストールして実行する場合
-
-## 前提条件
-
-* Node.jsがインストール済みであること
-
-
-## モジュールのインストールとテスト時刻
+## ファイル名を指定して実行
 
 ```
-npm install
-npm run test
+TEST_TARGET=src/tutorial/matcher.test.js docker-compose up
 ```
-
-## watchAll で実行
-
-```
-npm run test -- --watchAll
-```
+ctrl + c で停止

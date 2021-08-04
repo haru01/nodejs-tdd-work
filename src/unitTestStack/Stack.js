@@ -41,8 +41,14 @@ class Stack {
     return this.#nodes.pop();
   }
 
+  // test用
   toString() {
     return `<Stack:[${this.#nodes}]>`;
+  }
+
+  // test用
+  toNodes() {
+    return [...this.#nodes];
   }
 }
 

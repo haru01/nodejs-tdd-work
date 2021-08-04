@@ -5,6 +5,7 @@ module.exports = {
     'es2021': true,
     'jest': true
   },
+  'parser': 'babel-eslint',
   'extends': 'eslint:recommended',
   'parserOptions': {
     'ecmaVersion': 12,

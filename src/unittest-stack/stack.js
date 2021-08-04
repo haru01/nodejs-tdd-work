@@ -1,20 +1,13 @@
-class EmptyError extends Error {
-  constructor(message) {
-    super(message);
-  }
-}
+class EmptyError extends Error {}
 
-class OverflowError extends Error {
-  constructor(message) {
-    super(message);
-  }
-}
+class OverflowError extends Error {}
 
 class Stack {
   #capacity = 0;
-  #nodes = []
 
-  constructor(capacity=10) {
+  #nodes = [];
+
+  constructor(capacity = 10) {
     this.#capacity = capacity;
   }
 
@@ -53,9 +46,8 @@ class Stack {
   }
 }
 
-// eslint-disable-next-line no-undef
 module.exports = {
   Stack,
   EmptyError,
-  OverflowError
+  OverflowError,
 };

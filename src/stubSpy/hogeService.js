@@ -1,9 +1,20 @@
 const ExternalHogeGateway = require('./externalHogeGateway');
 
+class BusinessError extends Error {}
+
+class Order {
+  constructor(qunatity) {
+    if (qunatity < 10) {
+      throw new BusinessError('qunatityは10以上である必要があります');
+    }
+    this.qunatity = qunatity;
+  }
+}
+
 class HogeService {
   #externalHogeGateway;
 
-  constructor(externalHogeGateway=new ExternalHogeGateway()) {
+  constructor(externalHogeGateway = new ExternalHogeGateway()) {
     this.#externalHogeGateway = externalHogeGateway;
   }
 
@@ -21,7 +32,7 @@ class HogeService {
     return this.#externalHogeGateway
       .send(order) // indirect input であり indirect output
       .then((data) => {
-        if (200 != data.status) {
+        if (data.status !== 200) {
           // throw new Error(`NG: Send. status:${data.status}`)
           return Promise.reject(new Error(`NG: Send Error. status:${data.status}`));
         }
@@ -33,24 +44,8 @@ class HogeService {
   }
 }
 
-class BusinessError extends Error {
-  constructor(message) {
-    super(message);
-  }
-}
-
-class Order {
-  constructor(qunatity) {
-    if (qunatity < 10) {
-      throw new BusinessError('qunatityは10以上である必要があります');
-    }
-    this.qunatity = qunatity;
-  }
-}
-
-// eslint-disable-next-line no-undef
 module.exports = {
   HogeService,
   Order,
-  BusinessError
+  BusinessError,
 };

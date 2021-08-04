@@ -1,18 +1,19 @@
+/* eslint-disable arrow-body-style */
+
 // Promiseの非同期を伴った関数
 // return Promise.reject when messageがない場合
 // return Promise.resolve when messageがある場合
-const myPromiseFunc = (message) => {
+function myPromiseFunc(message) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (!message) {
-        reject('Fail:'); // 結果は 失敗で Fail:
+        reject(new Error('Fail:')); // 結果は 失敗で Fail:
       } else {
-        resolve('Success:' + message); // 結果は 成功で Success:<message>
+        resolve(`Success:${message}`); // 結果は 成功で Success:<message>
       }
-
     }, 100);
   });
-};
+}
 
 describe('myPromiseFunc', () => {
   // return & thenで記述
@@ -23,15 +24,15 @@ describe('myPromiseFunc', () => {
     // returnは省略しないこと。
     //   returnを省略した場合は、thenの中身が実行される前にテストが完了してしまい、
     //   意図通りassertionを評価しないで終わってしまう。
-    return myPromiseFunc('abc').then(data => {
+    return myPromiseFunc('abc').then((data) => {
       expect(data).toBe('Success:abc');
     });
   });
 
   // return & catchで記述
   test('引数が空なら失敗すること', () => {
-    return myPromiseFunc('').catch(data => {
-      expect(data).toBe('Fail:');
+    return myPromiseFunc('').catch((data) => {
+      expect(data).toEqual(new Error('Fail:'));
     });
   });
 
@@ -42,7 +43,7 @@ describe('myPromiseFunc', () => {
 
   // return & expect/rejectsを使って記述
   test('引数が空であれば失敗すること. expect & rejectsの利用', () => {
-    return expect(myPromiseFunc('')).rejects.toBe('Fail:');
+    return expect(myPromiseFunc('')).rejects.toEqual(new Error('Fail:'));
   });
 
   // async/await & expect/resolvesを使って記述
@@ -52,9 +53,8 @@ describe('myPromiseFunc', () => {
 
   // async/await & expect & rejectsを使って記述
   test('引数が空であれば失敗すること. expect & rejectsの利用', async () => {
-    await expect(myPromiseFunc('')).rejects.toBe('Fail:');
+    await expect(myPromiseFunc('')).rejects.toEqual(new Error('Fail:'));
   });
-
 });
 
 // コールバックは省略

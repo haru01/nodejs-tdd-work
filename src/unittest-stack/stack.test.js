@@ -35,7 +35,7 @@ describe('Stack.size', () => {
     stack.push(200);
     stack.pop();
     // act & assert
-    expect(stack.size()).toBe(2-1);
+    expect(stack.size()).toBe(2 - 1);
   });
 });
 

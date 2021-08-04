@@ -5,8 +5,8 @@ test('1+1は２である', () => {
 
 // toEqual オブジェクトの値の等価
 test('同じオブジェクトであること', () => {
-  const value = {one:1, two: 'b'};
-  expect(value).toEqual({one:1, two: 'b'});
+  const value = { one: 1, two: 'b' };
+  expect(value).toEqual({ one: 1, two: 'b' });
 });
 
 // 等価でない(not)
@@ -15,11 +15,7 @@ test('1+1は3ではない', () => {
 });
 
 // 例外のテスト
-class ZeroDivisionError extends Error {
-  constructor(message) {
-    super(message);
-  }
-}
+class ZeroDivisionError extends Error { }
 
 function div(a, b) {
   if (b === 0) {
@@ -37,7 +33,10 @@ test('divはゼロで割ると例外がでること', () => {
 
 // 文字列のテスト
 test('AB + CD + EF', () => {
-  const value = 'AB' + 'CD' + 'EF';
+  const ab = 'AB';
+  const cd = 'CD';
+  const ef = 'EF';
+  const value = ab + cd + ef;
   expect(value).toBe('ABCDEF');
   expect(value).toContain('BCDE');
   expect(value).toMatch(/DE/);

@@ -6,7 +6,6 @@ test('足し算ができること', () => {
   expect(add(1, 2)).toBe(3);
 });
 
-
 class Person {
   constructor(name, age) {
     this.name = name;
@@ -26,7 +25,7 @@ class Person {
 // 更新系のテスト1. 既存のアクセサー（参照系）で確認
 test('Person#clear クリアできること', () => {
   // arrange
-  let person = new Person('Taro', 32);
+  const person = new Person('Taro', 32);
   // act
   person.clear();
   // assert
@@ -34,11 +33,10 @@ test('Person#clear クリアできること', () => {
   expect(person.age).toBe(0);
 });
 
-
 // 更新系のテスト2. toEqual を使ってオブジェクトごと比較
 test('Person#clear クリアできること2', () => {
   // arrange
-  let person = new Person('Taro', 32);
+  const person = new Person('Taro', 32);
   // act
   person.clear();
   // assert
@@ -48,15 +46,12 @@ test('Person#clear クリアできること2', () => {
 // 更新系のテスト3. 文字列化
 test('Person#clear クリアできること3', () => {
   // arrange
-  let person = new Person('Taro', 32);
+  const person = new Person('Taro', 32);
   // act
   person.clear();
   // assert
   expect(person.toString()).toEqual('Person<name:"",age:0>');
 });
-
-
-
 
 test('filter, map ,reduceで書き換えよ', () => {
   // let result = 0;
@@ -66,36 +61,31 @@ test('filter, map ,reduceで書き換えよ', () => {
   //     result += tmp;
   //   }
   // }
-  let result = [1, 2, 3, 4]
-    .map(x => x * 2)
-    .filter(x => x > 4)
+  const result = [1, 2, 3, 4]
+    .map((x) => x * 2)
+    .filter((x) => x > 4)
     .reduce((total, x) => total + x);
   expect(result).toBe(14); // 6 + 8
 });
 
-
-var Code = {
-  A : 1,
-  B : 2,
-  C : 3,
-  D : 4
+const Code = {
+  A: 1,
+  B: 2,
+  C: 3,
+  D: 4,
 };
 
 // eslint-disable-next-line no-unused-vars
-function _amount(code) {
+function xxamount(code) {
   let result = 0;
   if (code === Code.A) {
     result = 15000;
+  } else if (code === Code.B) {
+    result = 2000;
+  } else if (code === Code.C) {
+    result = 1000;
   } else {
-    if (code === Code.B) {
-      result = 2000;
-    } else {
-      if (code === Code.C) {
-        result = 1000;
-      } else {
-        result = 500;
-      }
-    }
+    result = 500;
   }
   return result;
 }
@@ -123,11 +113,11 @@ test('amount', () => {
 const CardType = {
   Nomal: 1,
   Silver: 2,
-  Gold: 3
+  Gold: 3,
 };
 
 class XxxContext {
-  calcPoint(cardType, basePoint) {
+  static calcPoint(cardType, basePoint) {
     if (cardType === CardType.Nomal) {
       return basePoint;
     }
@@ -137,30 +127,32 @@ class XxxContext {
     if (cardType === CardType.Gold) {
       return (basePoint + 100) * 1.2;
     }
+    return 0;
   }
 }
 
 test('XxxxContext.calcPoint', () => {
-  const subject = new XxxContext();
-  expect(subject.calcPoint(CardType.Nomal, 1000)).toBe(1000);
-  expect(subject.calcPoint(CardType.Silver, 1000)).toBe(1100);
-  expect(subject.calcPoint(CardType.Gold, 1000)).toBe(1100 * 1.2);
+  expect(XxxContext.calcPoint(CardType.Nomal, 1000)).toBe(1000);
+  expect(XxxContext.calcPoint(CardType.Silver, 1000)).toBe(1100);
+  expect(XxxContext.calcPoint(CardType.Gold, 1000)).toBe(1100 * 1.2);
 });
 
-
 class NomalCard {
+  // eslint-disable-next-line class-methods-use-this
   calcPoint(basePoint) {
     return basePoint;
   }
 }
 
 class SilverCard {
+  // eslint-disable-next-line class-methods-use-this
   calcPoint(basePoint) {
     return basePoint + 100;
   }
 }
 
 class GoldCard {
+  // eslint-disable-next-line class-methods-use-this
   calcPoint(basePoint) {
     return (basePoint + 100) * 1.2;
   }
@@ -169,20 +161,19 @@ class GoldCard {
 const CardTypeB = {
   Nomal: new NomalCard(),
   Silver: new SilverCard(),
-  Gold: new GoldCard()
+  Gold: new GoldCard(),
 };
 
 class XxxContextB {
-  calcPoint(cardType, basePoint) {
+  static calcPoint(cardType, basePoint) {
     return cardType.calcPoint(basePoint);
   }
 }
 
 test('XxxxContextB.calcPoint', () => {
-  const subject = new XxxContextB();
-  expect(subject.calcPoint(CardTypeB.Nomal, 1000)).toBe(1000);
-  expect(subject.calcPoint(CardTypeB.Silver, 1000)).toBe(1100);
-  expect(subject.calcPoint(CardTypeB.Gold, 1000)).toBe(1100 * 1.2);
+  expect(XxxContextB.calcPoint(CardTypeB.Nomal, 1000)).toBe(1000);
+  expect(XxxContextB.calcPoint(CardTypeB.Silver, 1000)).toBe(1100);
+  expect(XxxContextB.calcPoint(CardTypeB.Gold, 1000)).toBe(1100 * 1.2);
 });
 
 // eslint-disable-next-line no-unused-vars
@@ -191,10 +182,13 @@ class Xxxx {
     this.clear();
     this.print();
   }
+
   clear() {
     this.count = 0;
     this.list = null;
   }
+
+  // eslint-disable-next-line class-methods-use-this
   print() {
     console.log('clear count');
     console.log('clear list');

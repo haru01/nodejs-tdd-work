@@ -2,7 +2,7 @@ const Calc = require('./calc');
 
 describe('Calcについて', () => {
   test('お試し', () => {
-    expect(1+2).toBe(3);
+    expect(1 + 2).toBe(3);
   });
   test('add 足し算が計算できる', () => {
     const calc = new Calc();

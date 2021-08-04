@@ -1,8 +1,7 @@
 const ExternalHogeGateway = require('./externalHogeGateway');
-const { HogeService, Order,BusinessError } = require('./hogeService');
+const { HogeService, Order, BusinessError } = require('./hogeService');
 
 jest.mock('./externalHogeGateway');
-
 
 describe('HogeService.order', () => {
   beforeEach(() => {
@@ -14,7 +13,7 @@ describe('HogeService.order', () => {
     // arrange
     const hogeService = new HogeService();
     const stubHogeGateway = ExternalHogeGateway.mock.instances[0];
-    stubHogeGateway.send.mockResolvedValue({status:200});
+    stubHogeGateway.send.mockResolvedValue({ status: 200 });
 
     // act & assert
     await expect(hogeService.order(10)).resolves.toEqual({ status: 'OK', xxx: 'xxxx' });
@@ -25,7 +24,7 @@ describe('HogeService.order', () => {
     // arrange
     const hogeService = new HogeService();
     const stubHogeGateway = ExternalHogeGateway.mock.instances[0];
-    stubHogeGateway.send.mockResolvedValue({status:400});
+    stubHogeGateway.send.mockResolvedValue({ status: 400 });
 
     // act & assert
     await expect(hogeService.order(10)).rejects.toEqual(new Error('NG: Send Error. status:400'));
@@ -36,7 +35,7 @@ describe('HogeService.order', () => {
     // arrange
     const hogeService = new HogeService();
     const stubAndSpySend = ExternalHogeGateway.mock.instances[0].send;
-    stubAndSpySend.mockResolvedValue({status:200}); // indirect & Input
+    stubAndSpySend.mockResolvedValue({ status: 200 }); // indirect & Input
 
     // act
     hogeService.order(10);

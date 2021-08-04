@@ -33,7 +33,7 @@ npm run test -- --watchAll src/tutorial/matcher.test.js
 ## Dockerを使って テスト実行（watchAll）
 
 ```
-docker-compose up
+docker-compose up --build
 ```
 ctrl + c で停止
 

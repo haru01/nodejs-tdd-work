@@ -1,4 +1,4 @@
-const ExternalHogeGateway = require('./externalHogeGateway');
+const ExternalHogeGateway = require('./ExternalHogeGateway');
 
 class BusinessError extends Error {}
 

@@ -1,7 +1,7 @@
-const ExternalHogeGateway = require('./externalHogeGateway');
-const { HogeService, Order, BusinessError } = require('./hogeService');
+const ExternalHogeGateway = require('./ExternalHogeGateway');
+const { HogeService, Order, BusinessError } = require('./HogeService');
 
-jest.mock('./externalHogeGateway');
+jest.mock('./ExternalHogeGateway');
 
 describe('HogeService.order', () => {
   beforeEach(() => {

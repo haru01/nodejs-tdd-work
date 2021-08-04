@@ -1,4 +1,4 @@
-const Calc = require('./calc');
+const Calc = require('./Calc');
 
 describe('Calcについて', () => {
   test('お試し', () => {

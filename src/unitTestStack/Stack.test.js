@@ -1,4 +1,4 @@
-const { Stack, EmptyError, OverflowError } = require('./stack');
+const { Stack, EmptyError, OverflowError } = require('./Stack');
 
 describe('Stack.capacity', () => {
   test('デフォルト容量が10であること', () => {

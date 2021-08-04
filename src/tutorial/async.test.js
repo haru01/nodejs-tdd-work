@@ -1,4 +1,6 @@
 // Promiseの非同期を伴った関数
+// return Promise.reject when messageがない場合
+// return Promise.resolve when messageがある場合
 const myPromiseFunc = (message) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -19,8 +21,8 @@ describe('myPromiseFunc', () => {
     expect.assertions(1);
 
     // returnは省略しないこと。
-    //   returnを省略した場合は、thenの中身が実行される前に完了してしまい、
-    //   意図通りassertionを評価しない
+    //   returnを省略した場合は、thenの中身が実行される前にテストが完了してしまい、
+    //   意図通りassertionを評価しないで終わってしまう。
     return myPromiseFunc('abc').then(data => {
       expect(data).toBe('Success:abc');
     });

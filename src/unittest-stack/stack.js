@@ -15,11 +15,11 @@ class Stack {
   #nodes = []
 
   constructor(capacity=10) {
-      this.#capacity = capacity;
+    this.#capacity = capacity;
   }
 
   capacity() {
-      return this.#capacity;
+    return this.#capacity;
   }
 
   size() {
@@ -36,9 +36,9 @@ class Stack {
 
   push(node) {
     if (this.isFull()) {
-      throw new OverflowError('スタックが満杯でpushできません')
+      throw new OverflowError('スタックが満杯でpushできません');
     }
-    this.#nodes.push(node)
+    this.#nodes.push(node);
   }
 
   pop() {
@@ -49,10 +49,11 @@ class Stack {
   }
 
   toString() {
-    return `<Stack:[${this.#nodes}]>`
+    return `<Stack:[${this.#nodes}]>`;
   }
 }
 
+// eslint-disable-next-line no-undef
 module.exports = {
   Stack,
   EmptyError,

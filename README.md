@@ -2,7 +2,7 @@
 
 ## 前提条件
 
-* Node.js 14x がインストール済みであること
+* Node.js 14.x.x がインストール済みであること
 
 https://nodejs.org/
 
@@ -43,3 +43,10 @@ ctrl + c で停止
 TEST_TARGET=src/tutorial/matcher.test.js docker-compose up
 ```
 ctrl + c で停止
+
+## docker でゼロから作りなし
+```
+docker system prune
+docker rmi nodejs-tdd-work_jest_tdd
+docker-compose up --build
+```

@@ -1,5 +1,5 @@
 ### 開発用コンテナの構築
-FROM node:latest
+FROM node:14
 USER root
 
 RUN apt-get update

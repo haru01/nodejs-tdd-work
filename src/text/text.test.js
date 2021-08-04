@@ -23,7 +23,7 @@ class Person {
 }
 
 // 更新系のテスト1. 既存のアクセサー（参照系）で確認
-test('Person#clear クリアできること', () => {
+test('Person.clear クリアできること', () => {
   // arrange
   const person = new Person('Taro', 32);
   // act
@@ -34,7 +34,7 @@ test('Person#clear クリアできること', () => {
 });
 
 // 更新系のテスト2. toEqual を使ってオブジェクトごと比較
-test('Person#clear クリアできること2', () => {
+test('Person.clear クリアできること2', () => {
   // arrange
   const person = new Person('Taro', 32);
   // act
@@ -44,7 +44,7 @@ test('Person#clear クリアできること2', () => {
 });
 
 // 更新系のテスト3. 文字列化
-test('Person#clear クリアできること3', () => {
+test('Person.clear クリアできること3', () => {
   // arrange
   const person = new Person('Taro', 32);
   // act

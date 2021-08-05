@@ -5,8 +5,13 @@ test('1+1は２である', () => {
 
 // toEqual オブジェクトの値の等価
 test('同じオブジェクトであること', () => {
-  const value = { one: 1, two: 'b' };
+  const value = { one: 1 };
+  value.two = 'b';
   expect(value).toEqual({ one: 1, two: 'b' });
+});
+
+test('mapで写像できること', () => {
+  expect([1, 2, 3].map((n) => n * n)).toEqual([1, 4, 9]);
 });
 
 // 等価でない(not)
@@ -28,6 +33,7 @@ test('divはゼロで割ると例外がでること', () => {
   expect(() => div(10, 0)).toThrow();
   expect(() => div(10, 0)).toThrow(ZeroDivisionError);
   expect(() => div(10, 0)).toThrow('ゼロでは割れません');
+  expect(() => div(10, 0)).toThrow(/割れません/);
   expect(() => div(10, 0)).toThrow(new ZeroDivisionError('ゼロでは割れません'));
 });
 
@@ -38,13 +44,12 @@ test('AB + CD + EF', () => {
   const ef = 'EF';
   const value = ab + cd + ef;
   expect(value).toBe('ABCDEF');
-  expect(value).toContain('BCDE');
   expect(value).toMatch(/DE/);
   expect(value).not.toMatch(/AE/);
 });
 
 // 配列のテスト
-test('AB + CD + EF', () => {
+test('[AB, CD, EF]について', () => {
   const value = ['AB', 'CD', 'EF'];
   expect(value).toEqual(['AB', 'CD', 'EF']);
   expect(value).not.toEqual(['ZZ', 'CD', 'EF']);

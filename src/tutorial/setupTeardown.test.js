@@ -2,16 +2,16 @@
 let globalUsers = ['abc'];
 
 describe('contextA', () => {
-  let temp;
+  let copyUsers;
   beforeEach(() => {
-    temp = Object.assign([], globalUsers);
+    copyUsers = [...globalUsers];
     globalUsers.push('efg');
   });
 
   // もし後処理がない場合はどうなる？
   afterEach(() => {
     // 元の状態に戻す
-    globalUsers = temp;
+    globalUsers = copyUsers;
   });
 
   test('users', () => {

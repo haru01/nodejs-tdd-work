@@ -35,18 +35,14 @@ npm run test -- --watchAll src/tutorial/matcher.test.js
 ```
 docker-compose up --build
 ```
-ctrl + c で停止
-
-## ファイル名を指定して実行
-
+docker-compose up で事前に立ち上げたあとで
 ```
-TEST_TARGET=src/tutorial/matcher.test.js docker-compose up
+docker-compose exec jest_tdd npm run test -- --watchAll
 ```
-ctrl + c で停止
 
-## docker でゼロから作りなし
+
+## 削除して作り直し
 ```
-docker system prune
-docker rmi nodejs-tdd-work_jest_tdd
+docker-compose down --rmi all --volumes --remove-orphans
 docker-compose up --build
 ```

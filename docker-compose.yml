@@ -9,4 +9,3 @@ services:
       - ./src:/app/src
       - /app/node_modules
     working_dir: /app
-    command: npm run test -- $JEST_OPT

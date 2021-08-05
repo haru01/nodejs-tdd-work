@@ -21,7 +21,7 @@ describe('myPromiseFunc', () => {
     // 想定したアサーションが呼ばれているか確認したい場合は、expect.assertionsを明記する
     expect.assertions(1);
 
-    // returnは省略しないこと。
+    // returnを使って非同期メソッドをテスト
     //   returnを省略した場合は、thenの中身が実行される前にテストが完了してしまい、
     //   意図通りassertionを評価しないで終わってしまう。
     return myPromiseFunc('abc').then((data) => {
@@ -31,6 +31,7 @@ describe('myPromiseFunc', () => {
 
   // return & catchで記述
   test('引数が空なら失敗すること', () => {
+    expect.assertions(1);
     return myPromiseFunc('').catch((data) => {
       expect(data).toEqual(new Error('Fail:'));
     });
@@ -38,21 +39,25 @@ describe('myPromiseFunc', () => {
 
   // return & expect/resolvesを使って記述
   test('引数があれば成功すること.expect & resolvesの利用', () => {
+    expect.assertions(1);
     return expect(myPromiseFunc('abc')).resolves.toBe('Success:abc');
   });
 
   // return & expect/rejectsを使って記述
   test('引数が空であれば失敗すること. expect & rejectsの利用', () => {
+    expect.assertions(1);
     return expect(myPromiseFunc('')).rejects.toEqual(new Error('Fail:'));
   });
 
   // async/await & expect/resolvesを使って記述
   test('引数があれば成功すること. async/await & expect & resolvesの利用', async () => {
+    expect.assertions(1);
     await expect(myPromiseFunc('abc')).resolves.toBe('Success:abc');
   });
 
   // async/await & expect & rejectsを使って記述
   test('引数が空であれば失敗すること. expect & rejectsの利用', async () => {
+    expect.assertions(1);
     await expect(myPromiseFunc('')).rejects.toEqual(new Error('Fail:'));
   });
 });

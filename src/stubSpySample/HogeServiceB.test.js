@@ -10,6 +10,7 @@ describe('HogeService.order', () => {
 
   // Stubサンプル
   test('OK: Send を返すこと. 外部サービスHogeに正常sendできたら', async () => {
+    expect.assertions(1);
     // arrange
     const hogeService = new HogeService();
     const stubHogeGateway = ExternalHogeGateway.mock.instances[0];
@@ -21,6 +22,7 @@ describe('HogeService.order', () => {
 
   // Stubサンプル
   test('NG: Send を返すこと. 外部サービスsend結果のステータスが200でない場合', async () => {
+    expect.assertions(1);
     // arrange
     const hogeService = new HogeService();
     const stubHogeGateway = ExternalHogeGateway.mock.instances[0];
@@ -32,13 +34,14 @@ describe('HogeService.order', () => {
 
   // Stub & Spy サンプル
   test('外部サービスHogeにsendすること_quantityが10以上の場合', async () => {
+    expect.assertions(2);
     // arrange
     const hogeService = new HogeService();
     const stubAndSpySend = ExternalHogeGateway.mock.instances[0].send;
     stubAndSpySend.mockResolvedValue({ status: 200 }); // indirect & Input
 
     // act
-    hogeService.order(10);
+    await hogeService.order(10);
 
     // assert
     expect(stubAndSpySend).toHaveBeenCalledTimes(1);
@@ -46,14 +49,18 @@ describe('HogeService.order', () => {
   });
 
   // Spy サンプル
-  test('外部サービスHogeにsendしないこと_quantityが9以下の場合', () => {
+  test('外部サービスHogeにsendしないこと_quantityが9以下の場合', async () => {
+    expect.assertions(1);
     // arrange
     const hogeService = new HogeService();
     // act
-    hogeService.order(9);
-    // assert
-    const spySend = ExternalHogeGateway.mock.instances[0].send;
-    expect(spySend).toHaveBeenCalledTimes(0);
+    try {
+      await hogeService.order(9);
+    } catch (error) {
+      // assert
+      const spySend = ExternalHogeGateway.mock.instances[0].send;
+      expect(spySend).toHaveBeenCalledTimes(0);
+    }
   });
 
   test('NGを返すこと_quantityが9以下の場合', async () => {

@@ -62,8 +62,8 @@ describe('HogeService.order', () => {
     // act
     await hogeService.order(10);
     // assert
-    expect(spy.sendCalledTimes()).toBe(1); // spy:indirect output send呼ばれないこと
-    expect(spy.sendParams()[0]).toEqual(new Order(10)); // spy:indirect output send呼ばれないこと
+    expect(spy.sendCalledTimes()).toBe(1); // spy:indirect output
+    expect(spy.sendParams()[0]).toEqual(new Order(10)); // spy:indirect output
   });
 
   test('rejectsを返すこと_quantityが9以下の場合', async () => {

@@ -50,7 +50,7 @@ test('Person.clear クリアできること3', () => {
   // act
   person.clear();
   // assert
-  expect(person.toString()).toEqual('Person<name:"",age:0>');
+  expect(person.toString()).toBe('Person<name:"",age:0>');
 });
 
 test('filter, map ,reduceで書き換えよ', () => {
